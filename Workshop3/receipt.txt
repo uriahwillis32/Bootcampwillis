@@ -1,0 +1,7 @@
+-------- RECEIPT --------
+Product Name | SKU | Price | Quantity
+----------------------------
+Wireless Charger iPhone | PW1431 | $12.99 | 1
+Battleship Board Game | GM1075 | $12.99 | 1
+
+Total: $25.98
