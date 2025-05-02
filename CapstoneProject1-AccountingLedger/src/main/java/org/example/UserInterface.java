@@ -16,7 +16,13 @@ public class UserInterface {
 
 
         while (running) {
-            displayHomeScreen();
+            System.out.println("\n\\\\ Financial Ledger Home \\\\");
+            System.out.println("A) Add Deposit");
+            System.out.println("B) Make Payment (Debit)");
+            System.out.println("C) View Ledger");
+            System.out.println("D) Exit");
+            System.out.print("Enter your choice: ");
+
             String choice = scanner.nextLine().trim().toUpperCase();
 
             switch (choice) {
@@ -40,14 +46,7 @@ public class UserInterface {
         scanner.close();
     }
 
-    private static void displayHomeScreen() {
-        System.out.println("\n\\\\ Financial Ledger Home \\\\");
-        System.out.println("A) Add Deposit");
-        System.out.println("B) Make Payment (Debit)");
-        System.out.println("C) View Ledger");
-        System.out.println("D) Exit");
-        System.out.print("Enter your choice: ");
-    }
+
 
 
 
@@ -64,7 +63,7 @@ public class UserInterface {
             System.out.print("Enter your choice: ");
 
             String choice = scanner.nextLine().trim().toUpperCase();
-            //List<Transaction> filtered;
+
 
             switch (choice) {
                 case "A":
@@ -76,7 +75,7 @@ public class UserInterface {
                     Ledger.depositsFilter(transactions);
                     break;
                 case "C":
-                    //display only nagative entries or payements
+                    //display only nagative entries or payments
                     Ledger.paymentsFilter(transactions);
                     break;
                 case "D":
