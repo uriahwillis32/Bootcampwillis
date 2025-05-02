@@ -7,57 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Ledger {
-
-
-   /*public static void customSearch(List<Transaction> transactions, Scanner scanner) {
-        System.out.println("\n//// Custom Search ////");
-
-        try {
-            System.out.print("Start Date (yyyy-MM-dd): ");
-            LocalDate startDate = LocalDate.parse(scanner.nextLine());
-
-            System.out.print("End Date (yyyy-MM-dd): ");
-            LocalDate endDate = LocalDate.parse(scanner.nextLine());
-
-            System.out.print("Enter Description (optional, press Enter to skip): ");
-            String descriptionInput = scanner.nextLine().trim().toLowerCase();
-
-            System.out.print("Enter Vendor Name (optional, press Enter to skip): ");
-            String vendorInput = scanner.nextLine().trim().toLowerCase();
-
-            System.out.print("Minimum Amount: ");
-            BigDecimal minAmount = new BigDecimal(scanner.nextLine());
-
-            System.out.print("Maximum Amount: ");
-            BigDecimal maxAmount = new BigDecimal(scanner.nextLine());
-
-            System.out.println("\nMatching Transactions:");
-
-            for (Transaction transaction : transactions) {
-                LocalDate date = transaction.getDate();
-                BigDecimal amount = transaction.getAmount();
-                String description = transaction.getDescription().toLowerCase();
-                String vendor = transaction.getVendor().toLowerCase();
-
-                boolean dateInRange = (date.isEqual(startDate) || date.isAfter(startDate)) &&
-                        (date.isEqual(endDate) || date.isBefore(endDate));
-                boolean amountInRange = amount.compareTo(minAmount) >= 0 &&
-                        amount.compareTo(maxAmount) <= 0;
-                boolean matchesDescription = descriptionInput.isEmpty() || description.contains(descriptionInput);
-                boolean matchesVendor = vendorInput.isEmpty() || vendor.contains(vendorInput);
-
-                if (dateInRange && amountInRange && matchesDescription && matchesVendor) {
-                    System.out.println("Date | Time | Description | Vendor | Amount");
-                    System.out.println(transaction.toString());
-                }
-            }
-
-        } catch (Exception ex) {
-            System.out.println("Invalid input. Please ensure dates are in yyyy-MM-dd and amounts are numbers.");
-        }
-    }
-
-*/
+    git
 
     //Home screen options
 
