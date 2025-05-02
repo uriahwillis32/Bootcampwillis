@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Ledger {
-    git
+
 
     //Home screen options
 
