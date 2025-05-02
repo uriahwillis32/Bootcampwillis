@@ -1,13 +1,9 @@
 package org.example;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
-public class LedgerHomeScreen {
+public class UserInterface {
 
     private static boolean running = true;
 
@@ -15,14 +11,8 @@ public class LedgerHomeScreen {
 
         List<Transaction> transactions = TransactionFileManager.readFile();
         Scanner scanner = new Scanner(System.in);
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-/*        String date = "2025-04-28";
-        String time = "14:30:00";
 
-        LocalDate parsedDate = LocalDate.parse(date, dateFormatter);
-        LocalTime parsedTime = LocalTime.parse(time, timeFormatter);*/
 
 
         while (running) {
@@ -40,7 +30,7 @@ public class LedgerHomeScreen {
                     showLedgerMenu(transactions, scanner);
                     break;
                 case "D":
-                    exitApplication();
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -114,8 +104,7 @@ public class LedgerHomeScreen {
             System.out.println("C) Year To Date");
             System.out.println("D) Previous Year");
             System.out.println("E) Search by Vendor");
-            System.out.println("F) Custom Search");
-            System.out.println("G) Back");
+            System.out.println("F) Back");
             System.out.print("Enter your choice: ");
 
             String userChoice = scanner.nextLine().trim().toUpperCase();
@@ -137,18 +126,10 @@ public class LedgerHomeScreen {
                     Ledger.searchByVendor(transactions, scanner);
                     break;
                 case "F":
-                    Ledger.customSearch(transactions, scanner);
-                    break;
-                case "G":
                     useReportsMenu = false;
                     break;
             }
         }
-    }
-
-    private static void exitApplication() {
-        System.out.println("Exiting application...");
-        running = false;
     }
 }
 
