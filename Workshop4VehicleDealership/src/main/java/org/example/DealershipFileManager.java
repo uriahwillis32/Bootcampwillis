@@ -12,7 +12,7 @@ import java.util.List;
 
         public static List<Vehicle> getDealership() {
 
-            try {java.io.FileReader fileReader = new java.io.FileReader("src/main/resources/vehicle.csv");
+            try {java.io.FileReader fileReader = new java.io.FileReader("src/main/resources/inventory.csv");
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
 
                 // skip the first line (if there's a header, otherwise remove this line)

@@ -10,7 +10,7 @@ public class Dealership {
         private String phone;
         private ArrayList<Vehicle> vehicles;
 
-        // Constructor
+
         public Dealership(String name, String address, String phone) {
             this.name = name;
             this.address = address;
@@ -18,7 +18,7 @@ public class Dealership {
             this.vehicles = new ArrayList<>();
         }
 
-        // Getters and Setters
+
         public String getName() {
             return name;
         }
@@ -48,42 +48,42 @@ public class Dealership {
             vehicles.add(vehicle);
         }
 
-        // Get all vehicles in inventory
+
         public ArrayList<Vehicle> getAllVehicles() {
             return vehicles;
         }
 
-        // Stub: remove a vehicle by VIN
+
         public void removeVehicle(int vin) {
 
         }
 
-        // Stub: search vehicles by price range
+
         public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
             return null;
         }
 
-        // Stub: search vehicles by make and model
+
         public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
             return null;
         }
 
-        // Stub: search vehicles by year range
+
         public ArrayList<Vehicle> getVehiclesByYear(int minYear, int maxYear) {
             return null;
         }
 
-        // Stub: search vehicles by color
+
         public ArrayList<Vehicle> getVehiclesByColor(String color) {
             return null;
         }
 
-        // Stub: search vehicles by mileage range
+
         public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
             return null;
         }
 
-        // Stub: search vehicles by type
+
         public ArrayList<Vehicle> getVehiclesByType(String type) {
             return null;
         }
