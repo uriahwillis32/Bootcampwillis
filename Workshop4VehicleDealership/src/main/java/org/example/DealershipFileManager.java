@@ -1,54 +1,69 @@
 package org.example;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+public class DealershipFileManager {
+    private static final String FILE_PATH = "src/main/resources/inventory.csv";
 
+    public static List<Vehicle> getDealership() {
+        List<Vehicle> vehicles = new ArrayList<>();
 
-    public class DealershipFileManager {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH))) {
+            bufferedReader.readLine(); // Skip header
 
-        public static List<Vehicle> getDealership() {
+            String input;
+            while ((input = bufferedReader.readLine()) != null) {
+                String[] row = input.split("\\|");
 
-            try {java.io.FileReader fileReader = new java.io.FileReader("src/main/resources/inventory.csv");
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-                // skip the first line (if there's a header, otherwise remove this line)
-                bufferedReader.readLine();
-
-                String input;
-                List<Vehicle> vehicles = new ArrayList<>();
-
-                while ((input = bufferedReader.readLine()) != null) {
-                    String[] row = input.split("\\|");
-
-                    int vin = Integer.parseInt(row[0]);
-                    int year = Integer.parseInt(row[1]);
-                    String make = row[2];
-                    String model = row[3];
-                    VehicleType type = VehicleType.fromString(row[4]);
-                    String color = row[5];
-                    int odometer = Integer.parseInt(row[6]);
-                    double price = Double.parseDouble(row[7]);
+                try {
+                    int vin = Integer.parseInt(row[0].trim());
+                    int year = Integer.parseInt(row[1].trim());
+                    String make = row[2].trim();
+                    String model = row[3].trim();
+                    VehicleType type = VehicleType.valueOf(row[4].trim().toUpperCase());
+                    String color = row[5].trim();
+                    int odometer = Integer.parseInt(row[6].trim());
+                    double price = Double.parseDouble(row[7].trim());
 
                     Vehicle vehicle = new Vehicle(color, make, model, odometer, price, type, vin, year);
                     vehicles.add(vehicle);
+                } catch (Exception e) {
+                    System.out.println("Skipping malformed row: " + input);
                 }
-
-                bufferedReader.close();
-                return vehicles;
-            } catch (IOException ex) {
-                System.out.println("Failed to load csv file: " + ex.getMessage());
-                return new ArrayList<>();
             }
+
+        } catch (IOException ex) {
+            System.out.println("Failed to load csv file: " + ex.getMessage());
         }
 
-        public static List<Vehicle> saveDealership() {
-            return null;
+        return vehicles;
+    }
+
+    public static void saveDealership(Dealership dealership) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))) {
+
+            writer.println("VIN|Year|Make|Model|Type|Color|Odometer|Price");
+
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                writer.printf("%d|%d|%s|%s|%s|%s|%d|%.2f%n",
+                        vehicle.getVin(),
+                        vehicle.getYear(),
+                        vehicle.getMake(),
+                        vehicle.getModel(),
+                        vehicle.getVehicleType(),
+                        vehicle.getColor(),
+                        vehicle.getOdometer(),
+                        vehicle.getPrice());
+            }
+
+            System.out.println("Inventory saved successfully.");
+        } catch (IOException e) {
+            System.out.println("Error saving dealership file: " + e.getMessage());
         }
     }
+}
 
 
 
