@@ -19,22 +19,22 @@ public class ContractDataManager {
                 writer.write("----------------------------------------------");
                 writer.newLine();
 
-                Vehicle v = contract.getVehicle();
+                Vehicle vehicle = contract.getVehicle();
                 writer.write("Vehicle Info:");
                 writer.newLine();
-                writer.write("  Year:             " + v.getYear());
+                writer.write("  Year:             " + vehicle.getYear());
                 writer.newLine();
-                writer.write("  Make:             " + v.getMake());
+                writer.write("  Make:             " + vehicle.getMake());
                 writer.newLine();
-                writer.write("  Model:            " + v.getModel());
+                writer.write("  Model:            " + vehicle.getModel());
                 writer.newLine();
-                writer.write("  Type:             " + v.getVehicleType());
+                writer.write("  Type:             " + vehicle.getVehicleType());
                 writer.newLine();
-                writer.write("  Color:            " + v.getColor());
+                writer.write("  Color:            " + vehicle.getColor());
                 writer.newLine();
-                writer.write("  Mileage:          " + v.getOdometer() + " miles");
+                writer.write("  Mileage:          " + vehicle.getOdometer() + " miles");
                 writer.newLine();
-                writer.write("  Price:            " + v.getPrice());
+                writer.write("  Price:            " + vehicle.getPrice());
                 writer.newLine();
                 writer.write("----------------------------------------------");
                 writer.newLine();
@@ -58,8 +58,8 @@ public class ContractDataManager {
                 writer.write("==============================================");
                 writer.newLine();
                 writer.newLine();
-            } catch (IOException e) {
-                System.out.println("Error saving contract: " + e.getMessage());
+            } catch (IOException ex) {
+                System.out.println("Error saving contract: " + ex.getMessage());
             }
         }
     }

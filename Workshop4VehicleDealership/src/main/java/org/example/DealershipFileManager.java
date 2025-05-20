@@ -29,7 +29,7 @@ public class DealershipFileManager {
 
                     Vehicle vehicle = new Vehicle(color, make, model, odometer, price, type, vin, year);
                     vehicles.add(vehicle);
-                } catch (Exception e) {
+                } catch (Exception ex) {
                     System.out.println("Skipping malformed row: " + input);
                 }
             }
@@ -59,12 +59,11 @@ public class DealershipFileManager {
             }
 
             System.out.println("Inventory saved successfully.");
-        } catch (IOException e) {
-            System.out.println("Error saving dealership file: " + e.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Error saving dealership file: " + ex.getMessage());
         }
     }
 }
-
 
 
 

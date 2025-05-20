@@ -95,10 +95,9 @@ public class UserInterface {
     }
 
     private void init() {
-        // Load the vehicles from file
+
         List<Vehicle> vehicleList = DealershipFileManager.getDealership();
 
-        // Initialize the dealership with placeholder info and loaded inventory
         this.dealership = new Dealership(
                 "123 Main St", new ArrayList<>(vehicleList), "D & B's Used Cars", "555-123-4567");
     }
@@ -185,7 +184,7 @@ public class UserInterface {
             Vehicle vehicle = new Vehicle(color, make, model, odometer, price, type, vin, year);
             dealership.addVehicle(vehicle);
             System.out.println("Vehicle added.");
-        } catch (Exception e) {
+        } catch (Exception ex) {
             System.out.println("Error adding vehicle. Please check your input.");
         }
     }

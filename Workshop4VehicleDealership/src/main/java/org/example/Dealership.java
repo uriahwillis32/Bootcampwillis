@@ -82,7 +82,7 @@ public class Dealership {
 
         try {
             type = VehicleType.valueOf(typeStr.trim().toUpperCase());
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ex) {
             return matchingVehiclesType;
         }
 
