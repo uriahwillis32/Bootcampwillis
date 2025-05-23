@@ -88,7 +88,7 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> vehicles) {
-        System.out.println(" Year | Make | Model | VehicleType | Color | Odometer | Price ");
+        System.out.println(" VIN |Year | Make | Model | VehicleType | Color | Odometer | Price ");
         for (Vehicle vehicle : vehicles) {
             System.out.println(vehicle);
         }
@@ -134,6 +134,7 @@ public class UserInterface {
 
     private void processGetByColorRequest(Scanner scanner) {
         System.out.print("Enter color: ");
+
         String color = scanner.nextLine();
 
         List<Vehicle> results = dealership.getVehiclesByColor(color);

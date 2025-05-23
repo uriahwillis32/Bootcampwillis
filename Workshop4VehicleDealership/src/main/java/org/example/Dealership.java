@@ -107,6 +107,7 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
+        DealershipFileManager.saveDealership(this);
     }
 
 
@@ -114,6 +115,7 @@ public class Dealership {
         for (Vehicle vehicle : inventory) {
             if (vehicle.getVin() == vin) {
                 inventory.remove(vehicle);
+                DealershipFileManager.saveDealership(this);
             }
         }
     }
@@ -121,5 +123,6 @@ public class Dealership {
 
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
+        DealershipFileManager.saveDealership(this);
     }
 }
