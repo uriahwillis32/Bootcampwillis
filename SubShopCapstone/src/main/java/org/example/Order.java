@@ -100,7 +100,6 @@ public class Order {
 
             writer.write("Date: " + dateTime.format(dateFormatter) +
                     " Time: " + dateTime.format(timeFormatter) + "\n");
-            //writer.write("Date: " + date + " Time: " + time + "\n");
 
             writer.write("Sandwiches:\n");
             if (sandwiches.isEmpty()) {
