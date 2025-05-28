@@ -134,8 +134,8 @@ public class Order {
             writer.write("============================\n");
             writer.flush();
             System.out.println("Receipt saved to: " + filename);
-        } catch (IOException e) {
-            System.out.println("Failed to save receipt: " + e.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Failed to save receipt: " + ex.getMessage());
         }
     }
 }
