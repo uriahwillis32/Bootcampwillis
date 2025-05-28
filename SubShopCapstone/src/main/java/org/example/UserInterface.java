@@ -301,11 +301,12 @@ public class UserInterface {
             boolean run = true;
             while (run) {
                 System.out.println("\nChoose a meat (or 0 to finish):");
-                System.out.println("1) Turkey");
+                System.out.println("1) Steak");
                 System.out.println("2) Ham");
-                System.out.println("3) Roast Beef");
-                System.out.println("4) Chicken");
-                System.out.println("5) Salami");
+                System.out.println("3) Salami");
+                System.out.println("4) Roast Beef");
+                System.out.println("5) Chicken");
+                System.out.println("6) Bacon");
                 System.out.println("0) Done");
                 System.out.print("Select an option: ");
 
@@ -315,7 +316,7 @@ public class UserInterface {
 
                 switch (choice) {
                     case 1:
-                        meat = "Turkey";
+                        meat = "Steak";
                         quantity = 1;
                         break;
                     case 2:
@@ -323,15 +324,19 @@ public class UserInterface {
                         quantity = 1;
                         break;
                     case 3:
-                        meat = "Roast Beef";
+                        meat = "Salami";
                         quantity = 1;
                         break;
                     case 4:
-                        meat = "Chicken";
+                        meat = "Roast Beef";
                         quantity = 1;
                         break;
                     case 5:
-                        meat = "Salami";
+                        meat = "Chicken";
+                        quantity = 1;
+                        break;
+                    case 6:
+                        meat = "Bacon";
                         quantity = 1;
                         break;
                     case 0:
@@ -357,7 +362,7 @@ public class UserInterface {
                         isExtra = false;
                         break;
                     default:
-                        System.out.println("Invalid input...");
+                        System.out.println("Invalid input. Please enter number 1 or 2");
                 }
 
                 if (isExtra) {
@@ -371,9 +376,9 @@ public class UserInterface {
             while (Done3) {
                 System.out.println("\nChoose a cheese (or 0 to finish):");
                 System.out.println("1) American");
-                System.out.println("2) Swiss");
+                System.out.println("2) Provolone");
                 System.out.println("3) Cheddar");
-                System.out.println("4) Provolone");
+                System.out.println("4) Swiss");
                 System.out.println("0) Done");
                 System.out.print("Select an option: ");
 
@@ -386,7 +391,7 @@ public class UserInterface {
                         quantity = 1;
                         break;
                     case 2:
-                        cheese = "Swiss";
+                        cheese = "Provolone";
                         quantity = 1;
                         break;
                     case 3:
@@ -394,7 +399,7 @@ public class UserInterface {
                         quantity = 1;
                         break;
                     case 4:
-                        cheese = "Provolone";
+                        cheese = "Swiss";
                         quantity = 1;
                         break;
                     case 0:
@@ -438,10 +443,14 @@ public class UserInterface {
             while (Done2) {
                 System.out.println("\nChoose a regular topping (or 0 to finish):");
                 System.out.println("1) Lettuce");
-                System.out.println("2) Tomato");
-                System.out.println("3) Pickles");
-                System.out.println("4) Onions");
-                System.out.println("5) Cucumbers");
+                System.out.println("2) Peppers");
+                System.out.println("3) Onions");
+                System.out.println("4) Tomato");
+                System.out.println("5) Jalapenos");
+                System.out.println("6) Cucumbers");
+                System.out.println("7) Pickles");
+                System.out.println("7) Guacamole");
+                System.out.println("7) Mushrooms");
                 System.out.println("0) Done");
                 System.out.print("Select an option: ");
 
@@ -454,19 +463,35 @@ public class UserInterface {
                         quantity = 1;
                         break;
                     case 2:
-                        topping = "Tomato";
+                        topping = "Peppers";
                         quantity = 1;
                         break;
                     case 3:
-                        topping = "Pickles";
-                        quantity = 1;
-                        break;
-                    case 4:
                         topping = "Onions";
                         quantity = 1;
                         break;
+                    case 4:
+                        topping = "Tomato";
+                        quantity = 1;
+                        break;
                     case 5:
+                        topping = "Jalapenos";
+                        quantity = 1;
+                        break;
+                    case 6:
                         topping = "Cucumbers";
+                        quantity = 1;
+                        break;
+                    case 7:
+                        topping = "Pickles";
+                        quantity = 1;
+                        break;
+                    case 8:
+                        topping = "Guacamole ";
+                        quantity = 1;
+                        break;
+                    case 9:
+                        topping = "Mushrooms";
                         quantity = 1;
                         break;
                     case 0:
@@ -485,9 +510,9 @@ public class UserInterface {
                 System.out.println("\nChoose a sauce (or 0 to finish):");
                 System.out.println("1) Mayo");
                 System.out.println("2) Mustard");
-                System.out.println("3) Ranch");
-                System.out.println("4) Chipotle");
-                System.out.println("5) Oil & Vinegar");
+                System.out.println("3) Ketchup");
+                System.out.println("4) Thousand Islands");
+                System.out.println("5) Vinaigrette");
                 System.out.println("0) Done");
                 System.out.print("Select an option: ");
 
@@ -501,13 +526,13 @@ public class UserInterface {
                         sauce = "Mustard";
                         break;
                     case 3:
-                        sauce = "Ranch";
+                        sauce = "Ketchup";
                         break;
                     case 4:
-                        sauce = "Chipotle";
+                        sauce = "Thousand Islands";
                         break;
                     case 5:
-                        sauce = "Oil & Vinegar";
+                        sauce = "Vinaigrette";
                         break;
                     case 0:
                         Done1 = false;

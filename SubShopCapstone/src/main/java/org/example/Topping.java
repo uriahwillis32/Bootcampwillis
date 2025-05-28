@@ -27,7 +27,7 @@ public class Topping {
     public double getCostForEachToppingEnum(SandwichSize size) {
         double originalcost = 0.0;
 
-        if (type == ToppingType.MEAT) {
+        if (type == ToppingType.MEAT && quantity == 1) {
             if (size == SandwichSize.FOUR_INCH) {
                 originalcost = 1.0;
             } else if (size == SandwichSize.EIGHT_INCH) {
@@ -36,17 +36,17 @@ public class Topping {
                 originalcost = 3.0;
             }
 
-            if (quantity > 1) {
+            if (quantity > 1 && type == ToppingType.MEAT ) {
                 if (size == SandwichSize.FOUR_INCH) {
-                    originalcost += (quantity - 1) * 0.5;
+                    originalcost += 0.5;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    originalcost += (quantity - 1) * 1.0;
+                    originalcost += 1.0;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    originalcost += (quantity - 1) * 1.5;
+                    originalcost += 1.5;
                 }
             }
 
-        } else if (type == ToppingType.CHEESE) {
+        } else if (type == ToppingType.CHEESE && quantity == 1) {
             if (size == SandwichSize.FOUR_INCH) {
                 originalcost = 0.75;
             } else if (size == SandwichSize.EIGHT_INCH) {
@@ -56,12 +56,12 @@ public class Topping {
             }
 
             if (quantity > 1) {
-                if (size == SandwichSize.FOUR_INCH) {
-                    originalcost += (quantity - 1) * 0.3;
+                if (size == SandwichSize.FOUR_INCH && type == ToppingType.CHEESE) {
+                    originalcost += 0.3;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    originalcost += (quantity - 1) * 0.6;
+                    originalcost += 0.6;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    originalcost += (quantity - 1) * 0.9;
+                    originalcost += 0.9;
                 }
             }
         }

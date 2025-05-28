@@ -1,7 +1,10 @@
 package org.example;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,7 @@ public class Order {
     private List<Drink> drinks = new ArrayList<>();
     private List<Chips> chips = new ArrayList<>();
     private LocalDateTime dateTime = LocalDateTime.now();
+    //private LocalTime time = LocalTime.now();
 
     public void addSandwich(Sandwich sandwich) {
         sandwiches.add(0,sandwich);
@@ -88,9 +92,15 @@ public class Order {
 
 
     public void saveReceiptToFile(String filename) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
+
         try (FileWriter writer = new FileWriter(filename, true)) {
             writer.write("\n===== ORDER RECEIPT =====\n");
-            writer.write("Date: " + dateTime + "\n");
+
+            writer.write("Date: " + dateTime.format(dateFormatter) +
+                    " Time: " + dateTime.format(timeFormatter) + "\n");
+            //writer.write("Date: " + date + " Time: " + time + "\n");
 
             writer.write("Sandwiches:\n");
             if (sandwiches.isEmpty()) {
