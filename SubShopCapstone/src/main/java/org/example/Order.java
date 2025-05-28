@@ -53,7 +53,7 @@ public class Order {
             int count = 1;
             for (Sandwich sandwich : sandwiches) {
                 System.out.println("  Sandwich #" + count++ + ":");
-                System.out.println("    " + sandwich); // uses updated toString()
+                System.out.println("    " + sandwich);
             }
         }
 
