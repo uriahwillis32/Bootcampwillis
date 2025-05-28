@@ -1,8 +1,0 @@
-===== RECEIPT =====
-org.example.Sandwich@133314b
-org.example.Drink@b1bc7ed
-org.example.Chips@7cd84586
-Subtotal: $12.75
-Tax (7%): $0.89
-Total: $13.64
-Time: 2025-05-27T11:45:06.694720400

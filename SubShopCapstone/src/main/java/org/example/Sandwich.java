@@ -35,24 +35,66 @@ public class Sandwich {
     }
 
     public double getCost() {
-        double base = 0.0;
+        double originalcost = 0.0;
 
         if (size == SandwichSize.FOUR_INCH) {
-            base = 5.5;
+            originalcost = 5.5;
         } else if (size == SandwichSize.EIGHT_INCH) {
-            base = 7.0;
+            originalcost = 7.0;
         } else if (size == SandwichSize.TWELVE_INCH) {
-            base = 8.5;
+            originalcost = 8.5;
         }
 
-        for (int i = 0; i < meats.size(); i++) {
-            base += meats.get(i).getCostForEachToppingEnum(size);
+        for (Topping meat : meats) {
+            originalcost += meat.getCostForEachToppingEnum(size);
         }
 
-        for (int i = 0; i < cheeses.size(); i++) {
-            base += cheeses.get(i).getCostForEachToppingEnum(size);
+        for (Topping cheese : cheeses) {
+            originalcost += cheese.getCostForEachToppingEnum(size);
         }
 
-        return base;
+        return originalcost;
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Size: ").append(size);
+        sb.append(", Bread: ").append(breadType);
+        sb.append(", Toasted: ").append(toasted ? "Yes" : "No");
+
+        if (!meats.isEmpty()) {
+            sb.append("\n  Meats: ");
+            for (Topping meat : meats) {
+                sb.append(meat.getName()).append(", ");
+            }
+            sb.setLength(sb.length() - 2); // Remove trailing comma
+        }
+
+        if (!cheeses.isEmpty()) {
+            sb.append("\n  Cheeses: ");
+            for (Topping cheese : cheeses) {
+                sb.append(cheese.getName()).append(", ");
+            }
+            sb.setLength(sb.length() - 2);
+        }
+
+        if (!regulars.isEmpty()) {
+            sb.append("\n  Toppings: ");
+            for (Topping topping : regulars) {
+                sb.append(topping.getName()).append(", ");
+            }
+            sb.setLength(sb.length() - 2);
+        }
+
+        if (!sauces.isEmpty()) {
+            sb.append("\n  Sauces: ");
+            for (String sauce : sauces) {
+                sb.append(sauce).append(", ");
+            }
+            sb.setLength(sb.length() - 2);
+        }
+
+        return sb.toString();
+    }
+
 }

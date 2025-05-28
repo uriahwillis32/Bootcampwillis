@@ -25,47 +25,47 @@ public class Topping {
     }
 
     public double getCostForEachToppingEnum(SandwichSize size) {
-        double base = 0.0;
+        double originalcost = 0.0;
 
         if (type == ToppingType.MEAT) {
             if (size == SandwichSize.FOUR_INCH) {
-                base = 1.0;
+                originalcost = 1.0;
             } else if (size == SandwichSize.EIGHT_INCH) {
-                base = 2.0;
+                originalcost = 2.0;
             } else if (size == SandwichSize.TWELVE_INCH) {
-                base = 3.0;
+                originalcost = 3.0;
             }
 
             if (quantity > 1) {
                 if (size == SandwichSize.FOUR_INCH) {
-                    base += (quantity - 1) * 0.5;
+                    originalcost += (quantity - 1) * 0.5;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    base += (quantity - 1) * 1.0;
+                    originalcost += (quantity - 1) * 1.0;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    base += (quantity - 1) * 1.5;
+                    originalcost += (quantity - 1) * 1.5;
                 }
             }
 
         } else if (type == ToppingType.CHEESE) {
             if (size == SandwichSize.FOUR_INCH) {
-                base = 0.75;
+                originalcost = 0.75;
             } else if (size == SandwichSize.EIGHT_INCH) {
-                base = 1.5;
+                originalcost = 1.5;
             } else if (size == SandwichSize.TWELVE_INCH) {
-                base = 2.25;
+                originalcost = 2.25;
             }
 
             if (quantity > 1) {
                 if (size == SandwichSize.FOUR_INCH) {
-                    base += (quantity - 1) * 0.3;
+                    originalcost += (quantity - 1) * 0.3;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    base += (quantity - 1) * 0.6;
+                    originalcost += (quantity - 1) * 0.6;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    base += (quantity - 1) * 0.9;
+                    originalcost += (quantity - 1) * 0.9;
                 }
             }
         }
 
-        return base;
+        return originalcost;
     }
 }

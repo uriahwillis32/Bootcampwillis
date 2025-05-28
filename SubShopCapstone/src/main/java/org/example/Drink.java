@@ -21,6 +21,10 @@ public class Drink {
             return 3.00;
         }
     }
+    @Override
+    public String toString() {
+        return String.format("%s Drink (%s) - $%.2f", flavor, size, getCost());
+    }
 }
 
 

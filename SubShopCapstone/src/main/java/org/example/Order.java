@@ -47,19 +47,35 @@ public class Order {
         System.out.println("\n===== ORDER DETAILS =====");
 
         System.out.println("Sandwiches:");
-        for (Sandwich sandwich : sandwiches) {
-            System.out.println(sandwich);
+        if (sandwiches.isEmpty()) {
+            System.out.println("  None");
+        } else {
+            int count = 1;
+            for (Sandwich sandwich : sandwiches) {
+                System.out.println("  Sandwich #" + count++ + ":");
+                System.out.println("    " + sandwich); // uses updated toString()
+            }
         }
 
         System.out.println("Drinks:");
-        for (Drink drink : drinks) {
-            System.out.println(drink);
+        if (drinks.isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (Drink drink : drinks) {
+                System.out.println("  - " + drink);
+            }
         }
 
         System.out.println("Chips:");
-        for (Chips chip : chips) {
-            System.out.println(chip);
+        if (chips.isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (Chips chip : chips) {
+                System.out.println("  - " + chip);
+            }
         }
+
+        System.out.println("----------------------------");
 
         double subtotal = getTotalCost();
         double tax = subtotal * 0.07;
@@ -69,7 +85,62 @@ public class Order {
         System.out.printf("Tax (7%%): $%.2f%n", tax);
         System.out.printf("Total: $%.2f%n", total);
     }
+
+
+    public void saveReceiptToFile(String filename) {
+        try (FileWriter writer = new FileWriter(filename, true)) {
+            writer.write("\n===== ORDER RECEIPT =====\n");
+            writer.write("Date: " + dateTime + "\n");
+
+            writer.write("Sandwiches:\n");
+            if (sandwiches.isEmpty()) {
+                writer.write("  None\n");
+            } else {
+                int count = 1;
+                for (Sandwich sandwich : sandwiches) {
+                    writer.write("  Sandwich #" + count++ + ":\n");
+                    writer.write("    " + sandwich + "\n");
+                }
+            }
+
+            writer.write("Drinks:\n");
+            if (drinks.isEmpty()) {
+                writer.write("  None\n");
+            } else {
+                for (Drink drink : drinks) {
+                    writer.write("  - " + drink + "\n");
+                }
+            }
+
+            writer.write("Chips:\n");
+            if (chips.isEmpty()) {
+                writer.write("  None\n");
+            } else {
+                for (Chips chip : chips) {
+                    writer.write("  - " + chip + "\n");
+                }
+            }
+
+            writer.write("----------------------------\n");
+
+            double subtotal = getTotalCost();
+            double tax = subtotal * 0.07;
+            double total = subtotal + tax;
+
+            writer.write(String.format("Subtotal: $%.2f%n", subtotal));
+            writer.write(String.format("Tax (7%%): $%.2f%n", tax));
+            writer.write(String.format("Total: $%.2f%n", total));
+
+            writer.write("============================\n");
+            writer.flush();
+            System.out.println("Receipt saved to: " + filename);
+        } catch (IOException e) {
+            System.out.println("Failed to save receipt: " + e.getMessage());
+        }
+    }
 }
+
+
 
 
 

@@ -1,0 +1,45 @@
+===== RECEIPT =====
+Order Time: 2025-05-28T14:09:21.252558400
+
+Sandwiches:
+org.example.Sandwich@506e1b77
+Drinks:
+Chips:
+
+Subtotal: $11.50
+Tax (7%): $0.81
+Total: $12.31
+
+===== ORDER RECEIPT =====
+Date: 2025-05-28T14:21:30.054297200
+Sandwiches:
+  Sandwich #1:
+    org.example.Sandwich@65b3120a
+Drinks:
+  - org.example.Drink@79fc0f2f
+Chips:
+  - org.example.Chips@50040f0c
+----------------------------
+Subtotal: $23.75
+Tax (7%): $1.66
+Total: $25.41
+============================
+
+===== ORDER RECEIPT =====
+Date: 2025-05-28T14:32:46.492083600
+Sandwiches:
+  Sandwich #1:
+    Size: FOUR_INCH, Bread: RYE, Toasted: Yes
+  Meats: Roast Beef
+  Cheeses: Swiss
+  Toppings: Lettuce, Tomato, Onions, Cucumbers
+  Sauces: Mayo, Mustard, Oil & Vinegar
+Drinks:
+  - Fanta Orange Drink (MEDIUM) - $2.50
+Chips:
+  - Doritos Nacho Cheese Chips - $1.50
+----------------------------
+Subtotal: $11.75
+Tax (7%): $0.82
+Total: $12.57
+============================
