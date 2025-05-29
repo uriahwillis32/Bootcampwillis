@@ -449,8 +449,8 @@ public class UserInterface {
                 System.out.println("5) Jalapenos");
                 System.out.println("6) Cucumbers");
                 System.out.println("7) Pickles");
-                System.out.println("7) Guacamole");
-                System.out.println("7) Mushrooms");
+                System.out.println("8) Guacamole");
+                System.out.println("9) Mushrooms");
                 System.out.println("0) Done");
                 System.out.print("Select an option: ");
 

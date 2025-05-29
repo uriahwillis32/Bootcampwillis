@@ -5,7 +5,7 @@ public class Topping {
     private String name;
     private int quantity;
 
-    // ✅ Constructor you need
+
     public Topping(String name, ToppingType type, int quantity) {
         this.name = name;
         this.type = type;
@@ -25,47 +25,54 @@ public class Topping {
     }
 
     public double getCostForEachToppingEnum(SandwichSize size) {
-        double originalcost = 0.0;
+        double originalCost = 0.0;
 
-        if (type == ToppingType.MEAT && quantity == 1) {
-            if (size == SandwichSize.FOUR_INCH) {
-                originalcost = 1.0;
-            } else if (size == SandwichSize.EIGHT_INCH) {
-                originalcost = 2.0;
-            } else if (size == SandwichSize.TWELVE_INCH) {
-                originalcost = 3.0;
-            }
-
-            if (quantity > 1 && type == ToppingType.MEAT ) {
+        if (type == ToppingType.MEAT) {
+            if (quantity >= 1) {
                 if (size == SandwichSize.FOUR_INCH) {
-                    originalcost += 0.5;
+                    originalCost = 1.00 + (quantity - 1) * 0.50;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    originalcost += 1.0;
+                    originalCost = 2.00 + (quantity - 1) * 1.00;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    originalcost += 1.5;
+                    originalCost = 3.00 + (quantity - 1) * 1.50;
                 }
             }
-
-        } else if (type == ToppingType.CHEESE && quantity == 1) {
-            if (size == SandwichSize.FOUR_INCH) {
-                originalcost = 0.75;
-            } else if (size == SandwichSize.EIGHT_INCH) {
-                originalcost = 1.5;
-            } else if (size == SandwichSize.TWELVE_INCH) {
-                originalcost = 2.25;
-            }
-
-            if (quantity > 1) {
-                if (size == SandwichSize.FOUR_INCH && type == ToppingType.CHEESE) {
-                    originalcost += 0.3;
+        } else if (type == ToppingType.CHEESE) {
+            if (quantity >= 1) {
+                if (size == SandwichSize.FOUR_INCH) {
+                    originalCost = 0.75 + (quantity - 1) * 0.30;
                 } else if (size == SandwichSize.EIGHT_INCH) {
-                    originalcost += 0.6;
+                    originalCost = 1.50 + (quantity - 1) * 0.60;
                 } else if (size == SandwichSize.TWELVE_INCH) {
-                    originalcost += 0.9;
+                    originalCost = 2.25 + (quantity - 1) * 0.90;
                 }
             }
         }
 
-        return originalcost;
+
+        if (type == ToppingType.MEAT && quantity == 1) {
+            if (size == SandwichSize.FOUR_INCH) {
+                originalCost = 1.00;
+            } else if (size == SandwichSize.EIGHT_INCH) {
+                originalCost = 2.00;
+            } else if (size == SandwichSize.TWELVE_INCH) {
+                originalCost = 3.00;
+            }
+        } else if (type == ToppingType.CHEESE && quantity == 1) {
+            if (size == SandwichSize.FOUR_INCH) {
+                originalCost = 0.75;
+            } else if (size == SandwichSize.EIGHT_INCH) {
+                originalCost = 1.50;
+            } else if (size == SandwichSize.TWELVE_INCH) {
+                originalCost = 2.25;
+            }
+        }
+
+        return originalCost;
+
+        }
     }
-}
+
+
+
+

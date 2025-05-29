@@ -1,38 +1,30 @@
-
-===== ORDER RECEIPT =====
-Date: 2025-05-28T14:32:46.492083600
+======= DELI-cious Receipt =======
 Sandwiches:
   Sandwich #1:
-    Size: FOUR_INCH, Bread: RYE, Toasted: Yes
-  Meats: Roast Beef
-  Cheeses: Swiss
-  Toppings: Lettuce, Tomato, Onions, Cucumbers
-  Sauces: Mayo, Mustard, Oil & Vinegar
+    Size: EIGHT_INCH
+    Bread: WHITE
+    Toasted: Yes
+    Meats:
+      - Steak (extra) ($3.00)
+      - Chicken (extra) ($3.00)
+    Cheeses:
+      - American  ($1.50)
+    Toppings:
+      - Lettuce
+      - Peppers
+      - Onions
+      - Tomato
+    Sauces:
+      - Mayo
+      - Mustard
+    Sandwich Total: $14.50
+    ----------------------------
 Drinks:
-  - Fanta Orange Drink (MEDIUM) - $2.50
+  - Coca-Cola Drink (MEDIUM) - $2.50
 Chips:
-  - Doritos Nacho Cheese Chips - $1.50
+  - Cheetos Chips - $1.50
 ----------------------------
-Subtotal: $11.75
-Tax (7%): $0.82
-Total: $12.57
-============================
-
-===== ORDER RECEIPT =====
-Date: 2025-05-28 Time: 03:11 PM
-Sandwiches:
-  Sandwich #1:
-    Size: EIGHT_INCH, Bread: RYE, Toasted: Yes
-  Meats: Chicken
-  Cheeses: Provolone
-  Toppings: Lettuce, Tomato, Onions, Cucumbers
-  Sauces: Mayo, Ranch, Chipotle
-Drinks:
-  - Barq's Root Beer Drink (SMALL) - $2.00
-Chips:
-  - SunChips Chips - $1.50
-----------------------------
-Subtotal: $15.00
-Tax (7%): $1.05
-Total: $16.05
+Subtotal: $18.50
+Tax (7%): $1.30
+Total: $19.80
 ============================

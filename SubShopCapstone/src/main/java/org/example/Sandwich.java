@@ -18,6 +18,35 @@ public class Sandwich {
         this.toasted = toasted;
     }
 
+    public BreadType getBreadType() {
+        return breadType;
+    }
+
+    public SandwichSize getSize() {
+        return size;
+    }
+
+    public boolean isToasted() {
+        return toasted;
+    }
+
+    public List<Topping> getMeats() {
+        return meats;
+    }
+
+    public List<Topping> getCheeses() {
+        return cheeses;
+    }
+
+    public List<Topping> getRegulars() {
+        return regulars;
+    }
+
+    public List<String> getSauces() {
+        return sauces;
+    }
+
+
     public void addMeat(Topping meat) {
         meats.add(meat);
     }
@@ -38,11 +67,11 @@ public class Sandwich {
         double originalcost = 0.0;
 
         if (size == SandwichSize.FOUR_INCH) {
-            originalcost = 5.5;
+            originalcost = 5.50;
         } else if (size == SandwichSize.EIGHT_INCH) {
-            originalcost = 7.0;
+            originalcost = 7.00;
         } else if (size == SandwichSize.TWELVE_INCH) {
-            originalcost = 8.5;
+            originalcost = 8.50;
         }
 
         for (Topping meat : meats) {
