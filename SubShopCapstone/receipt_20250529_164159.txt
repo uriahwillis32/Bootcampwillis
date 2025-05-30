@@ -1,27 +1,29 @@
 ======= DELI-cious Receipt =======
+Date: 2025-05-29T16:41:27.700662700
+==================================
+
 Sandwiches:
   Sandwich #1:
     Size: EIGHT_INCH
     Bread: WHITE
     Toasted: Yes
     Meats:
-      - Steak  ($2.00)
+      - Bacon  ($2.00)
     Cheeses:
-      - American  ($1.50)
+      - Cheddar  ($1.50)
     Toppings:
       - Lettuce
-      - Peppers
-      - Onions
+      - Tomato
     Sauces:
-      - Mustard
+      - Ranch
     Sandwich Total: $10.50
     ----------------------------
 Drinks:
-  - Barq's Root Beer Drink (MEDIUM) - $2.50
+  None
 Chips:
-  - Fritos Chips - $1.50
+  None
 ----------------------------
-Subtotal: $14.50
-Tax (7%): $1.02
-Total: $15.52
+Subtotal: $10.50
+Tax (7%): $0.74
+Total: $11.24
 ============================
