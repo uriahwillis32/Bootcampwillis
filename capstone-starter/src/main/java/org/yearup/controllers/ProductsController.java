@@ -2,6 +2,7 @@ package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,87 +25,100 @@ public class ProductsController
         this.productDao = productDao;
     }
 
+    // GET /products
     @GetMapping
     @PreAuthorize("permitAll()")
-    public List<Product> search(@RequestParam(name="cat", required = false) Integer categoryId,
-                                @RequestParam(name="minPrice", required = false) BigDecimal minPrice,
-                                @RequestParam(name="maxPrice", required = false) BigDecimal maxPrice,
-                                @RequestParam(name="color", required = false) String color
-                                )
+    public ResponseEntity<List<Product>> search(
+            @RequestParam(name = "cat", required = false) Integer categoryId,
+            @RequestParam(name = "minPrice", required = false) BigDecimal minPrice,
+            @RequestParam(name = "maxPrice", required = false) BigDecimal maxPrice,
+            @RequestParam(name = "color", required = false) String color
+    )
     {
         try
         {
-            return productDao.search(categoryId, minPrice, maxPrice, color);
+            List<Product> products = productDao.search(categoryId, minPrice, maxPrice, color);
+            return ResponseEntity.ok(products);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
+    // GET /products/{id}
     @GetMapping("{id}")
     @PreAuthorize("permitAll()")
-    public Product getById(@PathVariable int id )
+    public ResponseEntity<Product> getById(@PathVariable int id)
     {
         try
         {
-            var product = productDao.getById(id);
+            Product product = productDao.getById(id);
+            if (product == null)
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
-            if(product == null)
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-            return product;
+            return ResponseEntity.ok(product);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
-    @PostMapping()
+    // POST /products
+    @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public Product addProduct(@RequestBody Product product)
+    public ResponseEntity<Product> addProduct(@RequestBody Product product)
     {
         try
         {
-            return productDao.create(product);
+            Product created = productDao.create(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(created);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
+    // PUT /products/{id}
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void updateProduct(@PathVariable int id, @RequestBody Product product)
+    public ResponseEntity<Void> updateProduct(@PathVariable int id, @RequestBody Product product)
     {
         try
         {
-            productDao.update(id,product);
+            productDao.update(id, product);
+            return ResponseEntity.noContent().build();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
+    // DELETE /products/{id}
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void deleteProduct(@PathVariable int id)
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id)
     {
         try
         {
-            var product = productDao.getById(id);
-
-            if(product == null)
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            Product product = productDao.getById(id);
+            if (product == null)
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
             productDao.delete(id);
+            return ResponseEntity.noContent().build();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

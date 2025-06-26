@@ -39,7 +39,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             }
             catch (SQLException e)
             {
-                e.printStackTrace(); // consider logging
+                e.printStackTrace();
             }
 
             return categories;
@@ -70,7 +70,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public Category create(Category category)
-    {// create catrgory
+    { // create catrgory
         String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
@@ -101,7 +101,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public void update(int categoryId, Category category)
-    {
+    { //update category
         String sql = "UPDATE categories SET name = ?, description = ? WHERE category_id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql))
@@ -120,7 +120,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public void delete(int categoryId)
-    {
+    { //delete category
         String sql = "DELETE FROM categories WHERE category_id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql))

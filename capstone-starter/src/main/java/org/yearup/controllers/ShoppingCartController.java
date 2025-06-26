@@ -1,9 +1,9 @@
 package org.yearup.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.yearup.data.ProductDao;
 import org.yearup.data.ShoppingCartDao;
 import org.yearup.data.UserDao;
@@ -26,8 +26,6 @@ public class ShoppingCartController
     private UserDao userDao;
     private ProductDao productDao;
 
-
-
     // each method in this controller requires a Principal object as a parameter
 
     public ShoppingCartController(ShoppingCartDao shoppingCartDao, UserDao userDao, ProductDao productDao)
@@ -38,7 +36,7 @@ public class ShoppingCartController
     }
 
     @GetMapping
-    public ShoppingCart getCart(Principal principal)
+    public ResponseEntity<ShoppingCart> getCart(Principal principal)
     {
         try
         {
@@ -49,21 +47,19 @@ public class ShoppingCartController
             int userId = user.getId();
 
             // use the shoppingcartDao to get all items in the cart and return the cart
-            return shoppingCartDao.getByUserId(user.getId());
-
+            ShoppingCart cart = shoppingCartDao.getByUserId(userId);
+            return ResponseEntity.ok(cart);
         }
         catch(Exception e)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     // add a POST method to add a product to the cart - the url should be
-    // https://localhost:8080/cart/products/15 (15 is the productId to be added
-    // POST: Add a product to the cart
-    @PreAuthorize("isAuthenticated()")
+    // https://localhost:8080/cart/products/15 (15 is the productId to be added)
     @PostMapping("/products/{productId}")
-    public void addProductToCart(@PathVariable int productId, Principal principal)
+    public ResponseEntity<Void> addProductToCart(@PathVariable int productId, Principal principal)
     {
         try
         {
@@ -71,10 +67,11 @@ public class ShoppingCartController
             User user = userDao.getByUserName(userName);
 
             shoppingCartDao.addProductToCart(user.getId(), productId);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         catch (Exception e)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to add product to cart.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
@@ -82,7 +79,9 @@ public class ShoppingCartController
     // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
     @PutMapping("/products/{productId}")
-    public void updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem item, Principal principal)
+    public ResponseEntity<Void> updateCartItem(@PathVariable int productId,
+                                               @RequestBody ShoppingCartItem item,
+                                               Principal principal)
     {
         try
         {
@@ -90,18 +89,18 @@ public class ShoppingCartController
             User user = userDao.getByUserName(userName);
 
             shoppingCartDao.updateProductQuantity(user.getId(), productId, item.getQuantity());
+            return ResponseEntity.ok().build();
         }
         catch (Exception e)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to update cart item.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart
     @DeleteMapping
-    public void clearCart(Principal principal)
+    public ResponseEntity<Void> clearCart(Principal principal)
     {
         try
         {
@@ -109,13 +108,11 @@ public class ShoppingCartController
             User user = userDao.getByUserName(userName);
 
             shoppingCartDao.removeAllCartItems(user.getId());
+            return ResponseEntity.noContent().build();
         }
         catch (Exception e)
         {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to clear cart.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
-
-
-

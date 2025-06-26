@@ -17,7 +17,7 @@ import java.util.List;
 public interface ShoppingCartDao {
     // Get the full cart for a user
     ShoppingCart getByUserId(int userId);
-    void addProductToCart(int userId, int productId);
+    boolean addProductToCart(int userId, int productId);
     void updateProductQuantity(int userId, int productId, int quantity);
     void removeAllCartItems(int userId);
 }
